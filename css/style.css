@@ -1,0 +1,111 @@
+:root {
+    --color-verde: #4A6745;
+    --color-verde-claro: #dde0b0;
+    --color-rosa: #f2cdcd;
+    --color-amarillo: #efb855;
+    --color-marron: #876a57;
+    --color-blanco: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comfortaa', cursive;
+    background-color: var(--color-blanco);
+    color: var(--color-marron);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background-color: var(--color-verde);
+    padding: 1rem 0;
+    color: var(--color-blanco);
+}
+
+header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    display: inline-block;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    background-color: var(--color-verde-claro);
+    padding: 3rem 0;
+    text-align: center;
+    color: var(--color-marron);
+}
+
+.hero h2{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.productos-destacados {
+    margin: 3rem 0;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+.producto-card {
+    border: 1px solid var(--color-verde);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--color-rosa);
+    transition: transform 0.3 ease;
+}
+
+.producto-card:hover {
+    transform: scale(1.05);
+}
+
+.producto-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+}
