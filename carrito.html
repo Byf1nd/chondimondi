@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <li<title>Document</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet"/> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">ChondiMondi</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="carrito.html" class="active">Carrito <span id="contador-carrito">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container fade-in visible">
+        <h2>🛒 Tu carrito</h2>
+        <div id="lista-carrito" class="carrito-lista">
+            <!-- Aquí se mostrarán los productos -->
+        </div>
+        <p id="carrito-vacio">Tu carrito está vacío.</p>
+    </main>
+
+    <footer>
+    <div class="container">
+      <p>&copy; 2025 ChondiMondi. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+   <script>
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const listaCarrito = document.getElementById("lista-carrito");
+    const carritoVacio = document.getElementById("carrito-vacio");
+    const contador = document.getElementById("contador-carrito");
+
+    const actualizarVista = () => {
+      listaCarrito.innerHTML = "";
+      if (carrito.length === 0) {
+        carritoVacio.style.display = "block";
+        contador.textContent = "0";
+        return;
+      }
+      carritoVacio.style.display = "none";
+      contador.textContent = carrito.length;
+
+      carrito.forEach((producto, index) => {
+        const div = document.createElement("div");
+        div.classList.add("carrito-item");
+        div.innerHTML = `
+          <span>${producto.nombre}</span>
+          <button class="quitar" data-index="${index}">Quitar</button>
+        `;
+        listaCarrito.appendChild(div);
+      });
+
+      const botonesQuitar = document.querySelectorAll(".quitar");
+      botonesQuitar.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const index = btn.getAttribute("data-index");
+          carrito.splice(index, 1);
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+          actualizarVista();
+        });
+      });
+    };
+
+    actualizarVista();
+  </script>
+    
+</body>
+</html>
